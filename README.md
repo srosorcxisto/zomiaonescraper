@@ -1,7 +1,7 @@
 ### About
 One of my favorite Podcast, SovryTech just moved from Patreon to PodBean. Unfortunately, the PodBean RSS Feed does not 
-include premium content, requiring the PodBean App to listen. Fortunately, PodBean DOES allow access to http content
-using HTTP authentication if you have the url for the mp3 file.
+include premium content, requiring the PodBean App to listen. luckily, PodBean DOES allow access to http content
+using HTTP authentication if you have the url for the mp3 file and a premium subscription.
 
 This script scrapes the zomia.podbean.com site for premium content and creates an RSS feed for it. When loaded into a 
 podcatcher, this allows you listen to premium content if you are a Zomia ONE Underground subscriber.
