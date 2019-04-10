@@ -38,5 +38,5 @@ This feed is updated every two hours.
 
 ### Help
 
-This was created primarily for my own use and is not very full featured. If you would like to improve this script, 
-feel free to submit a pull request. If you have any issues, feel free to reach out to me on GitHub.
+This was created primarily for my own use and is not very full featured or particularly well written. If you would like to improve this script,  eel free to submit a pull request. If you have any issues, feel free to reach out to me on GitHub or at
+srosorcxisto@protonmail.ch
