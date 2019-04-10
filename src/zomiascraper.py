@@ -46,19 +46,21 @@ for post in posts:
         post_date = post.find('span').get_text()
         post_date = parse(post_date)
         post_description = filter(lambda x: x in string.printable, post.find_all('p')[1].get_text())[:-13]
-        post_audio = post.find('div', attrs={'class': 'pbplayerBox theme13'})['data-uri']
-        post_guid = post['id']
-        podcast_feed.append((post_title, post_audio, post_description, post_date, post_guid))
+        post_audio = PyRSS2Gen.Enclosure( post.find('div', attrs={'class': 'pbplayerBox theme13'})['data-uri'],
+                                          '300000000', 'audio/mpeg')
+        post_permlink = post.find_all('a', href=True)[0]['href']
+
+        podcast_feed.append((post_title, post_audio, post_description, post_date, post_permlink))
 
 rss = PyRSS2Gen.RSS2(
     title='Unofficial Zomia ONE Premium Feed',
     link='https://zomia.podbean.com/',
     image=PyRSS2Gen.Image('https://pbcdn1.podbean.com/imglogo/ep-logo/pbblog4172212/zomiaoneunderground.jpg',
-                          'ZomiaONE',
-                          'https://zomia.podbean.com',
+                          'Unofficial Zomia ONE Premium Feed',
+                          'https://zomia.podbean.com/',
                           '144',
                           '144',
-                          'Zomia ONE Underground'),
+                          'Unofficial Zomia ONE Premium Feed'),
 
     description='This is an unofficial RSS feed for zomia.podbean.com which, unlike the Official RSS feed, '
                 'only includes premium content. To use this feed, you must use a Podcaster that supports HTTP '
@@ -81,4 +83,4 @@ rss.write_xml(open(outfile, 'w'))
 
 # save to public S3 bucket using AI credentials from environment
 s3 = boto3.resource('s3')
-s3.meta.client.upload_file(outfile, s3_bucket, feed_name)
+s3.meta.client.upload_file(outfile, s3_bucket, feed_name, ExtraArgs={'ContentType': 'text/xml' })
