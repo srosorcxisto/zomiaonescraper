@@ -81,6 +81,6 @@ for post in podcast_feed:
         pubDate=post[3]))
 rss.write_xml(open(outfile, 'w'))
 
-# save to public S3 bucket using AI credentials from environment
+# save to public S3 bucket using AMI credentials from environment
 s3 = boto3.resource('s3')
 s3.meta.client.upload_file(outfile, s3_bucket, feed_name, ExtraArgs={'ContentType': 'text/xml' })
