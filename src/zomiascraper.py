@@ -12,6 +12,8 @@ import mechanize
 
 # globals
 podbean_feed_url = 'https://zomia.podbean.com/'
+s3_bucket = 'zomiaoneunofficialfeed'
+feed_name = 'zomiaoneunofficialpatron.xml'
 outfile = 'zomia_' + time.strftime("%Y%m%d-%H%M%S") + '.xml'
 
 
@@ -80,4 +82,4 @@ rss.write_xml(open(outfile, 'w'))
 
 # save to public S3 bucket using AI credentials from environment
 s3 = boto3.resource('s3')
-s3.meta.client.upload_file(outfile, 'zomiaoneunofficialfeed', 'zomiaoneunofficialpatron.xml')
+s3.meta.client.upload_file(outfile, s3_bucket, feed_name)
