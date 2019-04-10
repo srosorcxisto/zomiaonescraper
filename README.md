@@ -11,7 +11,7 @@ or Podbean.
 
 ### Linux quickstart:
 ```bash
-$ git clone https://github.com/wkelly19/zomiaonescraper.git
+$ git clone https://github.com/srosorcxisto/zomiaonescraper.git
 $ cd zomiascraper
 $ nano src/zomiascraper.py 
      --> Change s3_bucket to whater you want 
