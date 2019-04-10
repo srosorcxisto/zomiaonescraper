@@ -6,6 +6,8 @@ using native HTTP Authentication if you have the url for the mp3 file and a prem
 This script scrapes the zomia.podbean.com site for premium content and creates an RSS feed for it. When loaded into a 
 podcatcher, this allows you to listen to premium content if you are a Zomia ONE Underground subscriber.
 
+The RSS is valid , but has only been tested in PodcastAddict. In theory it should work on any podcatcher.
+
 It should go without saying that this is a fan created script and is in no way connected with or endorsed by Zomia ONE
 or Podbean nor does it allow you to access premium content without a subscription.
 
