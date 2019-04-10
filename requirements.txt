@@ -1,0 +1,5 @@
+PyRSS2Gen==1.1
+boto3==1.9.130
+beautifulsoup4==4.7.1
+python_dateutil==2.8.0
+mechanize==0.4.1
