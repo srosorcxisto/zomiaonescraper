@@ -6,7 +6,7 @@ using native HTTP Authentication if you have the url for the mp3 file and a prem
 This script scrapes the zomia.podbean.com site for premium content and creates an RSS feed for it. When loaded into a 
 podcatcher, this allows you to listen to premium content if you are a Zomia ONE Underground subscriber.
 
-The RSS is valid , but has only been tested in PodcastAddict. In theory it should work on any podcatcher.
+The RSS is valid, but has only been tested in PodcastAddict. In theory it should work on any podcatcher that supports HTTP Auth and HTTP Redirects. It is know to not work with gPodder or Juice due to lack of Redirect support.
 
 It should go without saying that this is a fan created script and is in no way connected with or endorsed by Zomia ONE
 or Podbean nor does it allow you to access premium content without a subscription.
@@ -33,7 +33,7 @@ This assumes that your AMI credentials are stored in the environment.
 If you just want to use the feed without running the script or setting up s3, you can
  access my feed at:
 
-> https://zomiaoneunofficialfeed.s3.amazonaws.com/zomiaoneunofficialpatron.xml
+> https://is.gd/unofficialzomiaonepatronfeed
 
 In your favorite Podcatcher just add this feed and use your PodBean credentials
 for the authentication. Depending on your podcatcher, you may have to check a box for 
