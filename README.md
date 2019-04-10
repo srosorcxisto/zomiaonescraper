@@ -14,7 +14,7 @@ or Podbean.
 $ git clone https://github.com/srosorcxisto/zomiaonescraper.git
 $ cd zomiascraper
 $ nano src/zomiascraper.py 
-     --> Change s3_bucket to whater you want 
+     --> Change s3_bucket to whatever you want 
 $ virtualenv env
 $ source env/bin/activate
 $ pip install -r requirements.txt
