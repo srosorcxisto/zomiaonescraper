@@ -11,13 +11,9 @@ import http.cookiejar
 import mechanize
 
 # globals
-podbean_login_url = 'https://www.podbean.com/login'
 podbean_feed_url = 'https://zomia.podbean.com/'
 outfile = 'zomia_' + time.strftime("%Y%m%d-%H%M%S") + '.xml'
 
-# get podbean credentials from environment
-podbean_username = os.environ['podbean_username']
-podbean_password = os.environ['podbean_password!@']
 
 br = mechanize.Browser()
 
@@ -35,22 +31,6 @@ br.addheaders = [('User-agent',
                   'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
-
-# authenticate
-response = br.open(podbean_login_url)
-forms = [f for f in br.forms()]
-
-# get csc token information
-csc_field = forms[1].controls[0].name
-csc_token = forms[1].controls[0].value
-br.select_form(nr=1)
-
-# perform the login
-br.form.find_control(csc_field).readonly = False
-br[csc_field] = csc_token
-br['LoginForm[username]'] = podbean_username
-br["LoginForm[password]"] = podbean_password
-res = br.submit()
 
 res = br.open(podbean_feed_url)
 soup = BeautifulSoup(res.read(), features='html5lib')
