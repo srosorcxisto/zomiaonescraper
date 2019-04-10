@@ -61,12 +61,12 @@ rss = PyRSS2Gen.RSS2(
                           'Zomia ONE Underground'),
 
     description='This is an unofficial RSS feed for zomia.podbean.com which, unlike the Official RSS feed, '
-                'only includes Premium content. To use this feed you must use a Podcaster that supports HTTP '
+                'only includes premium content. To use this feed, you must use a Podcaster that supports HTTP '
                 'Authentication like PodcastAddict and be a Zomia ONE Patron. Enter your PodBean account credentials '
                 'in your Podcast App to access content. This script is maintained by a SovrynTech fan and relies on '
                 'scraping the Podbean site, so it may break at any time. Please send bugs to '
                 'srosorcxisto@protonmail.ch. This feed is completely unofficial and not connected in any way to the '
-                'ZomiaONE network.',
+                'Zomia ONE network.',
     lastBuildDate=datetime.now())
 
 rss_post = []
