@@ -7,7 +7,6 @@ from dateutil.parser import parse
 
 import PyRSS2Gen
 import boto3
-import http.cookiejar
 import mechanize
 
 # globals
