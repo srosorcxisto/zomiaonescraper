@@ -8,6 +8,9 @@ podcatcher, this allows you listen to premium content if you are a Zomia ONE Und
 
 It should go without saying that this is a fan created script and is in no way connected with or endorsed by Zomia ONE
 or Podbean nor does it allow you to access premium content without a subscription.
+### Requirements
+
+Python 2.7, pip and an s3 bucket
 
 ### Linux quickstart:
 ```bash
