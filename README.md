@@ -28,7 +28,7 @@ $ python src/zomiascraper.py
 
 ```
 
-This assumes that your AMI credentials are stored in the environment. 
+This assumes that your AMI credentials are stored in the environment (best practice for EC2 instances). 
 
 If you just want to use the feed without running the script or setting up s3, you can
  access my feed at:
@@ -44,5 +44,5 @@ This feed is updated every two hours.
 
 ### Help
 
-This was created primarily for my own use and is not very full featured or particularly well written. If you would like to improve this script,  eel free to submit a pull request. If you have any issues, feel free to reach out to me on GitHub or at
+This was created primarily for my own use and is not very full featured or particularly well written. If you would like to improve this script,  feel free to submit a pull request. If you have any issues, feel free to reach out to me on GitHub or at
 srosorcxisto@protonmail.ch
