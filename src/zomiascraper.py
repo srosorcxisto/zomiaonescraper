@@ -1,4 +1,3 @@
-import os
 import string
 import time
 from bs4 import BeautifulSoup
