@@ -1,5 +1,5 @@
 ### About
-One of my favorite Podcast, SovryTech just moved from Patreon to PodBean. Unfortunately, the PodBean RSS Feed does not 
+One of my favorite Podcast, SovrynTech just moved from Patreon to PodBean. Unfortunately, the PodBean RSS Feed does not
 include premium content, requiring the PodBean App to listen. Luckily, PodBean DOES allow access to premium content
 using native HTTP Authentication if you have the url for the mp3 file and a premium subscription.
 
@@ -10,6 +10,25 @@ The RSS feed has been tested in PodcastAddict [(Play Store link)](https://play.g
 
 It should go without saying that this is a fan created script and is in no way connected with or endorsed by Zomia ONE
 or Podbean nor does it allow you to access premium content without a subscription.
+
+
+## Feed
+
+If you just want to use the feed without running the script or setting up s3, you can
+ access my feed at:
+
+> https://is.gd/unofficialzomiaonepatronfeed
+
+In your favorite Podcatcher just add this feed and use your PodBean credentials
+for the authentication. Depending on your podcatcher, you may have to check a box for
+“Authentication required” (or similar) to see these fields. If you are not a Premium
+subscriber you will receive an 403 error.
+
+This feed is updated every two hours.
+
+
+
+## Roll your own
 
 ### Requirements
 
@@ -30,17 +49,6 @@ $ python src/zomiascraper.py
 
 This assumes that your AMI credentials are stored in the environment (best practice for EC2 instances). 
 
-If you just want to use the feed without running the script or setting up s3, you can
- access my feed at:
-
-> https://is.gd/unofficialzomiaonepatronfeed
-
-In your favorite Podcatcher just add this feed and use your PodBean credentials
-for the authentication. Depending on your podcatcher, you may have to check a box for 
-“Authentication required” (or similar) to see these fields. If you are not a Premium 
-subscriber you will receive an 403 error.
-
-This feed is updated every two hours.
 
 ### Help
 
