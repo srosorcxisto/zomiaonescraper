@@ -1,25 +1,25 @@
 import string
 import time
-from bs4 import BeautifulSoup
 from datetime import datetime
-from dateutil.parser import parse
 
 import PyRSS2Gen
+import bleach
 import boto3
 import mechanize
+from bs4 import BeautifulSoup
+from dateutil.parser import parse
 
 # globals
 podbean_feed_url = 'https://zomia.podbean.com/'
 s3_bucket = 'zomiaoneunofficialfeed'
-feed_name = 'zomiaoneunofficialpatron.xml'
-outfile = 'zomia_' + time.strftime("%Y%m%d-%H%M%S") + '.xml'
-
+feed_name = 'test_zomiaoneunofficialpatron.xml'
+outfile = 'zomia_' + time.strftime("%Y%m%d-%H%M%S") + '.xml'  # Save each .xml file revision for debugging.
 
 br = mechanize.Browser()
 
-# Enable cookie support for urllib2
-cookiejar = http.cookiejar.LWPCookieJar()
-br.set_cookiejar(cookiejar)
+# Enable cookie support
+# cookiejar = http.cookiejar.LWPCookieJar()
+# br.set_cookiejar(cookiejar)
 
 # browser options
 br.set_handle_equiv(True)
@@ -44,10 +44,19 @@ for post in posts:
         post_title = filter(lambda x: x in string.printable, ''.join(post.find('h2').string))
         post_date = post.find('span').get_text()
         post_date = parse(post_date)
-        post_description = filter(lambda x: x in string.printable, post.find_all('p')[1].get_text())[:-13]
-        post_audio = PyRSS2Gen.Enclosure( post.find('div', attrs={'class': 'pbplayerBox theme13'})['data-uri'],
-                                          '300000000', 'audio/mpeg')
+        # post_description = filter(lambda x: x in string.printable, post.find_all('p')[1].get_text())[:-13]
+        post_audio = PyRSS2Gen.Enclosure(post.find('div', attrs={'class': 'pbplayerBox theme13'})['data-uri'],
+                                         '300000000', 'audio/mpeg')
         post_permlink = post.find_all('a', href=True)[0]['href']
+
+        post_soup = BeautifulSoup(br.open(post_permlink).read(), features='html5lib')
+        post_description_html = post_soup.find('div', attrs={'class': 'entry'})
+
+        post_description_html.find(('div'), attrs={'class': 'podPress_content'}).decompose()
+        post_description = bleach.clean(str(post_description_html),
+                                        tags=['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                                              'em', 'i', 'li', 'ol', 'strong', 'ul', 'p'],
+                                        strip=True).strip()
 
         podcast_feed.append((post_title, post_audio, post_description, post_date, post_permlink))
 
@@ -61,13 +70,9 @@ rss = PyRSS2Gen.RSS2(
                           '144',
                           'Unofficial Zomia ONE Premium Feed'),
 
-    description='This is an unofficial RSS feed for zomia.podbean.com which, unlike the Official RSS feed, '
-                'only includes premium content. To use this feed, you must use a Podcaster that supports HTTP '
-                'Authentication like PodcastAddict and be a Zomia ONE Patron. Enter your PodBean account credentials '
-                'in your Podcast App to access content. This script is maintained by a SovrynTech fan and relies on '
-                'scraping the Podbean site, so it may break at any time. Please send bugs to '
-                'srosorcxisto@protonmail.ch. This feed is completely unofficial and not connected in any way to the '
-                'Zomia ONE network.',
+    description=''''This is an unofficial RSS feed for zomia.podbean.com which, unlike the Official RSS feed, only 
+    includes premium content. For more information, visit https://github.com/srosorcxisto/zomiaonescraper This feed 
+    is completely unofficial and not connected in any way to the Zomia ONE network.''''',
     lastBuildDate=datetime.now())
 
 rss_post = []
@@ -82,4 +87,4 @@ rss.write_xml(open(outfile, 'w'))
 
 # save to public S3 bucket using AMI credentials from environment
 s3 = boto3.resource('s3')
-s3.meta.client.upload_file(outfile, s3_bucket, feed_name, ExtraArgs={'ContentType': 'text/xml' })
+s3.meta.client.upload_file(outfile, s3_bucket, feed_name, ExtraArgs={'ContentType': 'text/xml'})
