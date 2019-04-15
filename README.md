@@ -50,7 +50,7 @@ $ python src/zomiascraper.py
 This assumes that your AMI credentials are stored in the environment (best practice for EC2 instances). 
 
 
-### Help
+## Help
 
 This was created primarily for my own use and is not very full featured or particularly well written. If you would like to improve this script,  feel free to submit a pull request. If you have any issues, feel free to reach out to me on GitHub or at
 srosorcxisto@protonmail.ch
