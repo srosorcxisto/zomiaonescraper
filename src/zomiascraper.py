@@ -65,9 +65,9 @@ rss = PyRSS2Gen.RSS2(
                           '144',
                           'Unofficial Zomia ONE Premium Feed'),
 
-    description=''''This is an unofficial RSS feed for zomia.podbean.com which, unlike the Official RSS feed, only 
-    includes premium content. For more information, visit https://github.com/srosorcxisto/zomiaonescraper This feed 
-    is completely unofficial and not connected in any way to the Zomia ONE network.''''',
+    description='This is an unofficial RSS feed for zomia.podbean.com which, unlike the Official RSS feed, only '
+                'includes premium content. For more information, visit https://github.com/srosorcxisto/zomiaonescraper ' 
+                'This feedis completely unofficial and not connected in any way to the Zomia ONE network.',
     lastBuildDate=datetime.now())
 
 rss_post = []
