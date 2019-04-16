@@ -12,7 +12,7 @@ from dateutil.parser import parse
 # globals
 podbean_feed_url = 'https://zomia.podbean.com/'
 s3_bucket = 'zomiaoneunofficialfeed'
-feed_name = 'test_zomiaoneunofficialpatron.xml'
+feed_name = 'zomiaoneunofficialpatron.xml'
 outfile = 'zomia_' + time.strftime("%Y%m%d-%H%M%S") + '.xml'  # Save each .xml file revision for debugging.
 
 br = mechanize.Browser()
