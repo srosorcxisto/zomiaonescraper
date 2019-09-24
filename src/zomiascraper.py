@@ -38,8 +38,8 @@ podcast_feed = []
 for post in posts:
     if post.find('div', attrs={'class': 'premium-btn-block'}):
         post_title = filter(lambda x: x in string.printable, ''.join(post.find('h2').string))
-        post_date = post.find('span').get_text()
-        post_date = parse(post_date)
+        post_date = post.find('p', attrs={'class': 'post-info'}).get_text()
+        post_date = parse(post_date, fuzzy=True)
         post_audio = PyRSS2Gen.Enclosure(post.find('div', attrs={'class': 'pbplayerBox theme13'})['data-uri'],
                                          '300000000', 'audio/mpeg')
         post_permlink = post.find_all('a', href=True)[0]['href']
